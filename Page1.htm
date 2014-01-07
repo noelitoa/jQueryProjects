@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .bluediv { background-color : Navy; color:White; width: 200px;}
+        .reddiv { background-color : Red; color:White; width: 200px;}
+        .Highlight{ background-color: Yellow;}
+    </style>
+
+    <script src="Scripts/jquery-1.8.2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var html = "";
+
+            $('div.bluediv,div.reddiv').each(function (index) {
+
+                html += "<br\>" + index + " " + $(this).text();
+
+            });
+
+            var output = $('#OutputDiv');
+            output.html(html);
+
+            //            alert($('div[title="FirstDiv"]').text());
+
+
+            $('div.bluediv,div.reddiv').each(function (index) {
+
+                $(this).attr("title", "some title");
+
+            });
+
+            $('div.bluediv,div.reddiv')
+                .attr(
+                {
+                    title: "Some title JSON"
+
+                })
+                .css({ 'background-color': 'purple',
+                    'font-size': '14pt',
+                    'color': 'black'
+                });
+
+
+            var tcd = $('#TableContainerDiv');
+            tcd.append('<span style="background-color:green">Appended Div</span>');
+            tcd.prepend('<span style="background-color:green">Prepended Div</span>');
+            $('<span style="background-color:green">AppendTo Div</span>').appendTo(tcd);
+
+            //Wrap
+
+            $('span.Foo').wrap('<div class="reddiv ParentWrapper" />');
+            $('div.ParentWrapper').each(function () {
+                //alert($(this).html());
+            });
+
+            //Remove
+
+            $('div.ParentWrapper').remove();
+
+            //Class functions
+
+            //            $('input[type="text"]').addClass('Highlight');
+            //            $('#LastNameTextBox').removeClass();
+
+
+
+        });
+
+        function FocusBlur(tb) {
+
+            $(tb).toggleClass('Highlight');
+
+        }
+
+        function Blur(tb) {
+
+            $(tb).toggleClass('Highlight');
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div id="OutputDiv"></div>
+
+    <div id="TableContainerDiv" title="Contains Table">
+        <table id="DataTable">
+            <tr>
+                <td>Cell 1 Row 1</td>
+            </tr>
+            <tr>
+                <td>Cell 1 Row 2</td>
+            </tr>
+            <tr>
+                <td>Cell 1 Row 3</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="testdiv" title="FirstDiv">
+        This is my div text
+    </div>
+    
+    <div class="bluediv">
+        <span >Blue Div</span>
+    </div>
+    <div class="reddiv">
+        <span>Red Div</span>
+    </div>
+
+    <br />
+    
+    <span class="Foo">Span 1</span>
+    <span class="Foo">Span 2</span>
+    <span id="Span3">Span 3</span>
+
+
+    <div>Noel
+    <img src='' />
+    </div>
+    <div>Arlante</div>
+
+<br />
+        <div>
+        Firstname:
+        <input type="text" id="firstname" value="Jeff"/>
+        </div>
+        <div>
+        Lastname:
+        <input type="text" id="lastname" value="Bezos"/>
+        </div>
+    <form >
+    <table>
+        <tr>
+            <td style="width: 30;">
+                First Name:
+            </td>
+            <td style="width: 70;">
+                <input onfocus="FocusBlur(this)" onblur="FocusBlur(this)" type="text" id="FirstNameTextBox"
+                    value="Jeff" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Last Name:
+            </td>
+            <td>
+                <input onfocus="FocusBlur(this)" onblur="FocusBlur(this)" type="text" id="LastNameTextBox"
+                    value="Bezos" />
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Submit" id="SubmitButton"/></td>
+        </tr>
+    </table>
+    </form>
+
+    <script type="text/javascript">
+    
+    </script>
+
+</body>
+</html>
